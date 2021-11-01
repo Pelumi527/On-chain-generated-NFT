@@ -17,12 +17,14 @@ contract MyEpicNFT is ERC721URIStorage{
     string[] secondWords = ["Web3", "Space", "OnChain", "Web3Bridge", "Layer 2", "CryptoCurriencies"];
     string[] thirdWords = ["Coin", "Community", "is", "Scalability", "Latency", "AreYouReady"];
 
+    event NewEpicNFTMinted(address sender, uint256 tokenId);
     constructor() ERC721("RANDOMCRYTO", "RANDCRT"){
         console.log("This is my NFT contract. Whoa!");
     }
 
 
     function makeAnEpicNFT() public {
+        require(_tokenIds.current() <= 49, "only 50 NFT avaliable");
         uint256 newItemId = _tokenIds.current();
 
         string memory first = pickRandomFirstWord(newItemId);
@@ -62,6 +64,11 @@ contract MyEpicNFT is ERC721URIStorage{
 
         _tokenIds.increment();
         console.log("An NFT w/ ID %s has been minted to %s", newItemId, msg.sender);
+        emit NewEpicNFTMinted(msg.sender, newItemId);
+    }
+
+    function TotalMintedSoFar() public view returns(uint256){
+        return _tokenIds.current();
     }
 
     function pickRandomFirstWord(uint tokenId) internal view returns (string memory){

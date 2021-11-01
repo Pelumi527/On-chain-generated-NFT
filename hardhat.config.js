@@ -33,8 +33,8 @@ module.exports = {
         process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
     rinkeby: {
-      url: '',
-      accounts:['']
+      url: process.env.RINKEBY_URL,
+      accounts:[process.env.PRIVATE_KEY]
     },
   },
   gasReporter: {
