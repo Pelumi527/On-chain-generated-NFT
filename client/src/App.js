@@ -1,13 +1,15 @@
 import './App.css';
 import React, { useState, useEffect } from "react"
 import {ethers} from "ethers"
+import twitterLogo from './assets/twitter.svg';
 import myEpicNft from "./utils/myEpicNFT.json";
 import {Spinner} from "react-bootstrap"
 
 
 
 // Constants
-
+const TWITTER_HANDLE = 'FatoluP';
+const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`
 const OPENSEA_LINK = '';
 const TOTAL_MINT_COUNT = 50;
 
@@ -187,11 +189,20 @@ const App = () => {
         </div>
         <div>
           <p className="gradient-text">{mintedNFT} out of {TOTAL_MINT_COUNT} NFTs minted.</p>
+          <div>
+              <button className="cta-button connect-wallet-button">
+                <a href="https://testnets.opensea.io/collection/randomcryto-h8nhweluoy" target="_blank">View NFT Collection</a>
+              </button>
+          </div>
         </div>
         <div className="footer-container">
-          <button className="cta-button connect-wallet-button">
-            <a href="https://testnets.opensea.io/collection/randomcryto-h8nhweluoy" target="_blank">View NFT Collection</a>
-          </button>
+            <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
+            <a
+              className="footer-text"
+              href={TWITTER_LINK}
+              target="_blank"
+              rel="noreferrer"
+            >{`built on @${TWITTER_HANDLE}`}</a>
         </div>
       </div>
     </div>
